@@ -1,0 +1,74 @@
+{
+  "name": "notification-hook-materialui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "module": "buils/esm/index.js",
+  "scripts": {
+    "test": "cross-env NODE_ENV=development BABEL_ENV=test jest",
+    "build": "npm run build-cjs && npm run build-esm && npm run build-es",
+    "build-esm": "cross-env NODE_ENV=production BABEL_ENV=esm babel --config-file ./babel.config.js ./src --out-dir ./build/esm --ignore \"**/*.test.js\"",
+    "build-cjs": "cross-env NODE_ENV=production BABEL_ENV=cjs babel --config-file ./babel.config.js ./src --out-dir ./build --ignore \"**/*.test.js\"",
+    "build-es": "cross-env NODE_ENV=production BABEL_ENV=es babel --config-file ./babel.config.js ./src --out-dir ./build/es --ignore \"**/*.test.js\"",
+    "prebuild": "rimraf build",
+    "prettier": "npx prettier src/**/* --write"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prettier",
+      "pre-push": "npm test"
+    }
+  },
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/necccc/notification-hook-materialui.git"
+  },
+  "keywords": [
+    "react hooks",
+    "hooks",
+    "notification",
+    "notification ui",
+    "design systems",
+    "material-ui"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/necccc/notification-hook-materialui/issues"
+  },
+  "homepage": "https://github.com/necccc/notification-hook-materialui#readme",
+  "dependencies": {
+    "@babel/runtime": "^7.7.1",
+    "clsx": "^1.0.4"
+  },
+  "peerDependencies": {
+    "react": "^16.11.0",
+    "@material-ui/core": "^4.6.0",
+    "@material-ui/icons": "^4.5.1"
+  },
+  "devDependencies": {
+    "react": "^16.11.0",
+    "@material-ui/core": "^4.6.0",
+    "@material-ui/icons": "^4.5.1",
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.7.0",
+    "@babel/plugin-proposal-class-properties": "^7.7.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
+    "@babel/plugin-transform-object-assign": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.7.0",
+    "@testing-library/react-hooks": "^3.2.1",
+    "babel-plugin-optimize-clsx": "^2.5.0",
+    "babel-plugin-transform-dev-warning": "^0.1.1",
+    "babel-plugin-transform-react-constant-elements": "^6.23.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "cross-env": "^6.0.3",
+    "husky": "^3.0.9",
+    "jest": "^24.9.0",
+    "prettier": "^1.18.2",
+    "react-test-renderer": "^16.11.0",
+    "rimraf": "^3.0.0"
+  }
+}
