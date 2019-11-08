@@ -5,6 +5,9 @@
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "cross-env NODE_ENV=development BABEL_ENV=test jest",
     "build": "cross-env NODE_ENV=production BABEL_ENV=production rollup -c",
@@ -30,7 +33,7 @@
     "design systems",
     "material-ui"
   ],
-  "author": "",
+  "author": "nec@shell8.net",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/necccc/notification-hook-materialui/issues"
