@@ -19,6 +19,6 @@ export default () => {
     showSuccess: (message, props) => push('success', message, props),
     showInfo: (message, props) => push('info', message, props),
     showWarning: (message, props) => push('warning', message, props),
-    showError: (message, props) => push('error', message, props)
+    showError: (message, props) => push('error', message, props),
   };
 };

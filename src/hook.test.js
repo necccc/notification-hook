@@ -5,8 +5,10 @@ import useNotification from './hook';
 
 describe('hook', () => {
   it('should work with success', () => {
-    const notifications = []
-    const wrapper = ({ children }) => <Context.Provider value={ notifications }>{children}</Context.Provider>;
+    const notifications = [];
+    const wrapper = ({ children }) => (
+      <Context.Provider value={notifications}>{children}</Context.Provider>
+    );
     const { result } = renderHook(() => useNotification(), { wrapper });
 
     act(() => {
@@ -21,8 +23,10 @@ describe('hook', () => {
   });
 
   it('should work with error', () => {
-    const notifications = []
-    const wrapper = ({ children }) => <Context.Provider value={ notifications }>{children}</Context.Provider>;
+    const notifications = [];
+    const wrapper = ({ children }) => (
+      <Context.Provider value={notifications}>{children}</Context.Provider>
+    );
     const { result } = renderHook(() => useNotification(), { wrapper });
 
     act(() => {
@@ -37,8 +41,10 @@ describe('hook', () => {
   });
 
   it('should work with any custom prop', () => {
-    const notifications = []
-    const wrapper = ({ children }) => <Context.Provider value={ notifications }>{children}</Context.Provider>;
+    const notifications = [];
+    const wrapper = ({ children }) => (
+      <Context.Provider value={notifications}>{children}</Context.Provider>
+    );
     const { result } = renderHook(() => useNotification(), { wrapper });
 
     act(() => {
