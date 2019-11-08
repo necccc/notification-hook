@@ -1,8 +1,7 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import NotificationContext from './context';
-import Component from './component';
 
-export default () => {
+export default ({ component: Component }) => {
   const context = useContext(NotificationContext);
 
   return (

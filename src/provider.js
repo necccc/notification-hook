@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import NotificationContext from './context';
 import NotificationContainer from './container';
 
-export default ({ children }) => {
+export default ({ children, component }) => {
   const [notifications, setNotifications] = useState([]);
 
   const push = obj => {
@@ -41,7 +41,7 @@ export default ({ children }) => {
         }}
       >
         {children}
-        <NotificationContainer />
+        <NotificationContainer component={component} />
       </NotificationContext.Provider>
     </>
   );
