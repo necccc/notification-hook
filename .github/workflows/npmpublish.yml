@@ -44,4 +44,4 @@ jobs:
       - run: npm run build
       - run: npm publish
         env:
-          NPM_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NPM_AUTH_TOKEN: ${{secrets.gh_token}}
