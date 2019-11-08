@@ -5,32 +5,53 @@ import useNotification from './hook';
 
 describe('hook', () => {
   it('should work with success', () => {
-    const wrapper = ({ children }) => <Context.Provider value={[]}>{children}</Context.Provider>;
+    const notifications = []
+    const wrapper = ({ children }) => <Context.Provider value={ notifications }>{children}</Context.Provider>;
     const { result } = renderHook(() => useNotification(), { wrapper });
 
     act(() => {
       result.current.showSuccess('Yay!');
     });
 
-    expect(result.current.context).toHaveLength(1);
-    expect(result.current.context[0]).toHaveProperty('type', 'success');
-    expect(result.current.context[0]).toHaveProperty('message', 'Yay!');
-    expect(result.current.context[0]).toHaveProperty('duration', 5000);
-    expect(result.current.context[0]).toHaveProperty('open', true);
-    expect(result.current.context[0]).toHaveProperty('id');
+    expect(notifications).toHaveLength(1);
+    expect(notifications[0]).toHaveProperty('type', 'success');
+    expect(notifications[0]).toHaveProperty('message', 'Yay!');
+    expect(notifications[0]).toHaveProperty('open', true);
+    expect(notifications[0]).toHaveProperty('id');
   });
 
   it('should work with error', () => {
-    const wrapper = ({ children }) => <Context.Provider value={[]}>{children}</Context.Provider>;
+    const notifications = []
+    const wrapper = ({ children }) => <Context.Provider value={ notifications }>{children}</Context.Provider>;
     const { result } = renderHook(() => useNotification(), { wrapper });
 
     act(() => {
-      result.current.showError('Oh noes!', 2000);
+      result.current.showError('Oh noes!');
     });
 
-    expect(result.current.context).toHaveLength(1);
-    expect(result.current.context[0]).toHaveProperty('type', 'error');
-    expect(result.current.context[0]).toHaveProperty('message', 'Oh noes!');
-    expect(result.current.context[0]).toHaveProperty('duration', 2000);
+    expect(notifications).toHaveLength(1);
+    expect(notifications[0]).toHaveProperty('type', 'error');
+    expect(notifications[0]).toHaveProperty('message', 'Oh noes!');
+    expect(notifications[0]).toHaveProperty('open', true);
+    expect(notifications[0]).toHaveProperty('id');
+  });
+
+  it('should work with any custom prop', () => {
+    const notifications = []
+    const wrapper = ({ children }) => <Context.Provider value={ notifications }>{children}</Context.Provider>;
+    const { result } = renderHook(() => useNotification(), { wrapper });
+
+    act(() => {
+      result.current.showInfo('FYI: ', { duration: 2000, something: 'meh' });
+    });
+
+    expect(notifications).toHaveLength(1);
+    expect(notifications[0]).toHaveProperty('type', 'info');
+    expect(notifications[0]).toHaveProperty('message', 'FYI: ');
+    expect(notifications[0]).toHaveProperty('open', true);
+    expect(notifications[0]).toHaveProperty('id');
+
+    expect(notifications[0]).toHaveProperty('duration', 2000);
+    expect(notifications[0]).toHaveProperty('something', 'meh');
   });
 });

@@ -6,8 +6,8 @@
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
   "scripts": {
-    "test": "jest",
-    "build": "rollup -c",
+    "test": "cross-env NODE_ENV=development BABEL_ENV=test jest",
+    "build": "cross-env NODE_ENV=production BABEL_ENV=production rollup -c",
     "prebuild": "rimraf build",
     "prettier": "npx prettier src/**/* --write"
   },
