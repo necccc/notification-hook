@@ -17,7 +17,7 @@ export default MyComponent () => {
   useEffect(() => {
     fetch(API_URL)
       .then(res => setData(res))
-      // this will pop you error notification component, 
+      // this will pop up your error notification component, 
       // no need to import anything else here
       .catch(err => showError(err.message)) 
 
