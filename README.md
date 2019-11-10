@@ -69,3 +69,6 @@ They can be, for example:
 - [Notifications in Salesforce's Lightning](https://www.lightningdesignsystem.com/components/notifications/)
 - [MessageBar in Microsoft's UI Fabric](https://developer.microsoft.com/en-us/fabric#/controls/web/messagebar)
 
+## License
+
+MIT
