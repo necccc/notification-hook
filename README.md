@@ -126,9 +126,11 @@ Anything else you provide in a prop object will be passed to the component as pr
 
 ```jsx
 
+// showSuccess('Success, user created', { duration: 10000, autoHide: false })
+
 <YourNotificationComponent 
   type="success"
-  message={ message } 
+  message={ 'Success, user created' } 
   open={ true }
   onClose={ () => {} }
   duration={ 10000 }
