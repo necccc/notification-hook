@@ -11,6 +11,7 @@ import React, { useState, useEffect } from 'react'
 import { useNotification } from 'notification-hook'
 
 export default MyComponent () => {
+  const { showError } = useNotification()
   const [data, setData] = useState(null)
   
   useEffect(() => {
@@ -68,6 +69,74 @@ They can be, for example:
 - [Notification Bars in Mozilla's Protocol](https://protocol.mozilla.org/patterns/molecules/notification-bar.html)
 - [Notifications in Salesforce's Lightning](https://www.lightningdesignsystem.com/components/notifications/)
 - [MessageBar in Microsoft's UI Fabric](https://developer.microsoft.com/en-us/fabric#/controls/web/messagebar)
+
+## Documentation
+
+The hook provides four methods, each taking a notification message parameter.
+
+#### showError()
+#### showWarning()
+#### showInfo()
+#### showSuccess()
+
+```jsx
+
+showError(message [, props ])
+
+showWarning(message [, props ])
+
+showInfo(message [, props ])
+
+showSuccess(message [, props ])
+
+```
+
+You can pass additional data along the hook calls, they will be passed to your Presentational Component as props.
+
+**NOTE:** these won't be used by the library itself, you have to implement the way they will be handled.
+
+```jsx
+import { useNotification } from 'notification-hook'
+
+export default MyComponent () => {
+  const { 
+    showError,
+    showWarning,
+    showInfo,
+    showSuccess
+  } = useNotification()  
+  
+  showError('Error happened, see link for more info', { link: errorLink })
+  showSuccess('Success, user created', { duration: 10000, autoHide: false })
+}
+```
+
+## Implementing the Notification Component
+
+The `NotificationProvider` from the library will render your Presentational Component with a few predefined props, like these:
+
+| Prop      | Type     | Description                                                                 |
+|-----------|----------|-----------------------------------------------------------------------------|
+| `type`    | String   | Predefined type of notification, can be one of `error|warning|info|success` |
+| `message` | String   | The message you send from the hooks                                         |
+| `open`    | Boolean  | Should the notification be visible to the user?                             |
+| `onClose` | Function | Tell the library that's OK to remove the notification from the screen       |
+
+Anything else you provide in a prop object will be passed to the component as props. For example, the `showSuccess` call above will render your Presentational Component like this
+
+```jsx
+
+<YourNotificationComponent 
+  type="success"
+  message={ message } 
+  open={ true }
+  onClose={ () => {} }
+  duration={ 10000 }
+  autoHide={ false } 
+/>
+
+```
+
 
 ## License
 
